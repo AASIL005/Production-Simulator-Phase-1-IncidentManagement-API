@@ -1,49 +1,51 @@
-Production Simulator – Phase 1
+# Production Simulator - Phase 1: Incident Management API
 
-Overview
-This phase demonstrates the basic request–response lifecycle of the Production Simulator. It focuses on handling JSON requests, converting them into Java objects, processing them through the service layer, storing incidents, and returning a JSON response to the client.
+This phase focuses on building the core backend structure of the Production Incident Simulator.
 
-Workflow
-Client Request (JSON)
+The goal was to create a REST API capable of creating and retrieving incidents while understanding the basic flow of a Spring Boot application.
 
-The client sends a JSON payload representing an incident.
+## Features Implemented
 
-Spring Conversion
+- Incident Model
+- REST Controller
+- Service Layer
+- Create Incident API
+- Get All Incidents API
+- In-Memory Storage using HashMap
 
-Spring automatically converts the JSON into a CreateIncidentRequest object.
+## API Endpoints
 
-This is mapped to the Incident domain object.
+### Create Incident
 
-Controller Layer
+POST /incidents
 
-The IncidentController receives the CreateIncidentRequest.
+### Get All Incidents
 
-It delegates the processing to the service layer.
+GET /incidents
 
-Service Layer
+## Learning Outcomes
 
-The IncidentService creates a new Incident object.
+- Spring Boot Project Structure
+- REST API Development
+- Dependency Injection
+- Controller-Service Architecture
+- Request and Response Handling
+- In-Memory Data Storage
 
-The incident is stored in a HashMap (acting as an in-memory database for Phase 1).
+## Architecture
 
-Response Handling
+Client
+    ↓
+Controller
+    ↓
+Service
+    ↓
+HashMap Storage
 
-The stored incident is converted back into JSON.
+## Example Use Case
 
-The JSON response is sent back to the client.
+A user creates an incident through the API. The request is processed by the controller, handled by the service layer, and stored in memory for retrieval.
 
-Data Flow
+## Key Takeaway
 
-Client (JSON Request)
-        ↓
-Spring → CreateIncidentRequest / Incident
-        ↓
-Controller receives object
-        ↓
-Service creates Incident object
-        ↓
-Incident stored in HashMap
-        ↓
-Response → JSON
-        ↓
-Client receives JSON Response
+This phase established the foundation of the application and introduced the core request flow used throughout the project.
